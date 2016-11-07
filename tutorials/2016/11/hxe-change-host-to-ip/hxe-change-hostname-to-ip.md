@@ -19,11 +19,11 @@ if you want to access your applications by IP address and not by host name, foll
 
     ![xs apps before output](./beforechange.png)
 
-2. Run the command, `/sbin/ifconfig` to get the IP address of your system. Take a note of it for step 2.
+2. Run the command, `/sbin/ifconfig` to get the IP address of your system. Take a note of it for step 3.
 
     ![ifconfig command](./ifconfig.png)
 
-3. After taking a backup of the file, **/hana/shared/HXE/global/hdb/custom/config/xscontroller.ini**, add the following lines:
+3. After taking a backup of the file **/hana/shared/HXE/global/hdb/custom/config/xscontroller.ini**, add the following lines:
 
    ```
    [communication]
@@ -41,14 +41,13 @@ if you want to access your applications by IP address and not by host name, foll
 
 5. Log in to XSA Services.
    * If you are asked for the *API_URL*, enter **https://<YOUR_IP_ADDRESS_FROM_STEP_1>:39030**.
-   * If you are asked for the *SPACE*, .
-   * If you are asked for the SPACE, select the appropriate space. By default with HXE, apps use the SAP space.”.
+   * If you are asked for the SPACE, select the appropriate space. By default with HXE, apps use the SAP space.
 
 6. If you run the command, `xs apps` you should see an output similar to the image below.
 
    ![xs apps after output](./afterchange.png)
 
-7. To ensure that applications could be accessed using the system's IP address, go to https://(YOUR_IP_ADDRESS_FROM_STEP_1):(PORT_NUMBER_OF_WEBIDE) from a web browser. It should open the log in page for Web IDE.
+7. To ensure that applications could be accessed using the system's IP address, go to https://(YOUR_IP_ADDRESS_FROM_STEP_1):(PORT_NUMBER_OF_WEBIDE) from a web browser. It should open the login page for Web IDE.
 
 >Note: The command `xs apps` could be used to obtain **PORT_NUMBER_OF_WEBIDE** as shown below
 >      ![webide port number](./webideport.png)
