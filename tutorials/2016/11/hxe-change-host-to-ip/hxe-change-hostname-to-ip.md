@@ -5,17 +5,17 @@ tags: [  tutorial>beginner, tutorial>how-to, products>sap-hana\,-express-edition
 ---
 ## Prerequisites  
  - Proficiency: beginner
- - Setup: HANA express edition and applications installed
+ - Setup: HANA Express Edition (HXE) and applications installed
 
 ## How-To Details
-If you want to skip modifying `/etc/hosts` and access applications running on HANA using your system's IP address, follow along with the tutorial.
+if you want to access your applications by IP address and not by host name, follow along with the tutorial.
 
 ### Time to Complete
 **10 Min**.
 
 ---
 
-1. Run the command, `xs apps` to check whether applications are configured to be accessed by host names. If you see an       output similar to the below image, go to step 2.
+1. Run the command, `xs apps` to check whether applications are configured to be accessed by host names. If you see an output similar to the below image, go to step 2.
 
     ![xs apps before output](./beforechange.png)
 
@@ -23,7 +23,7 @@ If you want to skip modifying `/etc/hosts` and access applications running on HA
 
     ![ifconfig command](./ifconfig.png)
 
-3. In the file, **/hana/shared/HXE/global/hdb/custom/config/xscontroller.ini**, add the following lines:
+3. After taking a backup of the file, **/hana/shared/HXE/global/hdb/custom/config/xscontroller.ini**, add the following lines:
 
    ```
    [communication]
@@ -35,19 +35,23 @@ If you want to skip modifying `/etc/hosts` and access applications running on HA
 
    For example, if the IP address in step 1 is **10.172.248.172**, the file would look as follows after the edit:
 
-   ![xs apps before output](./changedfile.png)
+   ![xscontroller.ini file after step 3](./changedfile.png)
 
 4. Restart the database using the command `HDB stop && HDB start`.
 
 5. Log in to XSA Services.
-   * If you are asked for the *API_URL*, enter **https://hxehost:39030**.
-   * If you are asked for the *SPACE*, select **SAP**.
+   * If you are asked for the *API_URL*, enter **https://<YOUR_IP_ADDRESS_FROM_STEP_1>:39030**.
+   * If you are asked for the *SPACE*, .
+   * If you are asked for the SPACE, select the appropriate space. By default with HXE, apps use the SAP space.”.
 
 6. If you run the command, `xs apps` you should see an output similar to the image below.
 
    ![xs apps after output](./afterchange.png)
 
-7. To ensure that applications could be accessed using the system's IP address, go to https://(YOUR_IP_ADDRESS_FROM_STEP_1):53075 from a web browser. It should open the log in page for Web IDE.
+7. To ensure that applications could be accessed using the system's IP address, go to https://(YOUR_IP_ADDRESS_FROM_STEP_1):(PORT_NUMBER_OF_WEBIDE) from a web browser. It should open the log in page for Web IDE.
+
+>Note: The command `xs apps` could be used to obtain **PORT_NUMBER_OF_WEBIDE** as shown below
+>      ![webide port number](./webideport.png)
 
 
 ## Next Steps
