@@ -37,12 +37,12 @@ if you want to access your applications by IP address and not by host name, foll
 
    ![xscontroller.ini file after step 3](./changedfile.png)
 
-   >Note: The lines added to the file configures xscontroller to route to the specified IP address. 
+   >Note: The lines added to the file configures xscontroller to route to the specified IP address.
 
 4. Restart the database using the command `HDB stop && HDB start`.
 
 5. Log in to XSA Services.
-   * If you are asked for the *API_URL*, enter **https://(YOUR_IP_ADDRESS_FROM_STEP_1):3(YOUR_HANA_INSTANCE_NUMBER)30**.
+   * If you are asked for the *API_URL*, enter **https://(YOUR_IP_ADDRESS_FROM_STEP_2):3(YOUR_HANA_INSTANCE_NUMBER)30**.
 
      >Note:By default, the instance number is set to 90. As a result, the port number would be 39030.
      >
@@ -55,7 +55,7 @@ if you want to access your applications by IP address and not by host name, foll
 
    ![xs apps after output](./afterchange.png)
 
-7. To ensure that applications could be accessed using the system's IP address, go to https://(YOUR_IP_ADDRESS_FROM_STEP_1):(PORT_NUMBER_OF_WEBIDE) from a web browser. It should open the login page for Web IDE.
+7. To ensure that applications could be accessed using the system's IP address, go to *https://(YOUR_IP_ADDRESS_FROM_STEP_2):(PORT_NUMBER_OF_WEBIDE)* from a web browser. It should open the login page for Web IDE.
 
  >Note: The command `xs apps` could be used to obtain **PORT_NUMBER_OF_WEBIDE** as shown below
  >![webide port number](./webideport.png)
